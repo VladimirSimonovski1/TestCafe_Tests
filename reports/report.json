@@ -1,0 +1,33 @@
+{
+  "startTime": "2022-09-30T10:29:14.362Z",
+  "endTime": "2022-09-30T10:29:32.980Z",
+  "userAgents": [
+    "Chrome 105.0.0.0 / Windows 10"
+  ],
+  "passed": 0,
+  "total": 1,
+  "skipped": 0,
+  "fixtures": [
+    {
+      "name": "Getting Started",
+      "path": "D:\\OLD REPOS\\REPOS\\REPOS\\TestCafe_Tests\\test\\TestCafeTest.ts",
+      "meta": {},
+      "tests": [
+        {
+          "name": "Navigate to QAMIND home page",
+          "meta": {},
+          "errs": [
+            "AssertionError: expected '13 search results for “protractor”' to deeply equal '13 search results fowr “protractor”'\n\n+ expected - actual\n\n-13 search results for “protractor”\n+13 search results fowr “protractor”\n\n\nBrowser: Chrome 105.0.0.0 / Windows 10\nScreenshot: D:\\OLD REPOS\\REPOS\\REPOS\\TestCafe_Tests\\reports\\screenshots\\2022-09-30_Chrome_1.png\n\n    8 |        .maximizeWindow()\n    9 |        .typeText(\".search-field\", \"protractor\")\n   10 |        .click(\".search-submit\");\n   11 |\n   12 |        const numOfDearResults = await Selector(\".post-title\").innerText;\n > 13 |        await test.expect(numOfDearResults).eql(`13 search results fowr “protractor”`);\n   14 |    })\n   15 |\n   16 |\n\n   at <anonymous> (D:\\OLD REPOS\\REPOS\\REPOS\\TestCafe_Tests\\test\\TestCafeTest.ts:13:45)\n   at fulfilled (D:\\OLD REPOS\\REPOS\\REPOS\\TestCafe_Tests\\test\\TestCafeTest.ts:5:58)"
+          ],
+          "durationMs": 18062,
+          "unstable": false,
+          "screenshotPath": "D:\\OLD REPOS\\REPOS\\REPOS\\TestCafe_Tests\\reports\\screenshots\\2022-09-30_Chrome_1.png",
+          "skipped": false
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "The browser window was resized during the \"Navigate to QAMIND home page\" test while TestCafe recorded a video. TestCafe cannot adjust the video resolution during recording. As a result, the video content may appear broken. Do not resize the browser window when TestCafe records a video."
+  ]
+}
