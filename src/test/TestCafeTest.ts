@@ -1,7 +1,6 @@
 import { ChaiAssertions } from "../assertion/Assertions";
 import home from "../page-object/HomePage";
 
-
 fixture`QAMIND`.page("https://qamind.com/").beforeEach(async (test) => {
   await test.deleteCookies().maximizeWindow();
 });
@@ -21,5 +20,10 @@ test("Count the number of archives", async () => {
   await ChaiAssertions.checkIfActualEqualsExpected(numOfArchives, 20);
 });
 
-test.skip("Subscribe to the newsletter", async () => {
+test("Subscribe to the newsletter", async () => {
+  const successMsg = await home.subscribeToNewsletter();
+  await ChaiAssertions.checkIfActualEqualsExpected(
+    successMsg,
+    "Thank you, your sign up request was successful! Please check your e-mail inbox to confirm."
+  );
 });
