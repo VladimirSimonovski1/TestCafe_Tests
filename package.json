@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "testRunner": "node TestCafeRunner.js"
+    "test": "node TestCafeRunner.js"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",

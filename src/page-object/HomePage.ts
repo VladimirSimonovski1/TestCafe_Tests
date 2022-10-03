@@ -1,34 +1,34 @@
-import { IHomePage } from "../contracts/IHomePage";
-import { HomePageLocators } from "../locator/Locators";
-import { BasePage } from "./BasePage";
-const Logger = require("bunyan");
-const log = Logger.createLogger({ name: "Home Page Log" });
+import { Selector, t } from "testcafe";
 
-export class HomePage extends BasePage implements IHomePage {
-    constructor() {
-        super("https://www.miro.com");
-    }
+class HomePage {
+  public t: TestController;
+  private searchField: Selector;
+  private searchResults: Selector;
+  private searchSubmit: Selector;
+  private archives: Selector;
 
-    public async navigateToSignUpForm(): Promise<void> {
-        await this.waitForElementToBeClickableAndClick(
-            HomePageLocators.signUpBtn,
-        );
-        log.info("Sign up button is clicked!");
-    }
+  constructor() {
+    this.searchField = Selector(".search-field");
+    this.searchResults = Selector(".post-title");
+    this.searchSubmit = Selector(".search-submit");
+    this.archives = Selector("[id=archives-14] ul li");
+  }
 
-    public async getSignUpTitle(): Promise<boolean> {
-        const getStartedTitle = await this.returnElementValueIfDisplayed(
-            HomePageLocators.getStartedTitle,
-        );
-        if (
-            getStartedTitle === null ||
-            getStartedTitle === "" ||
-            getStartedTitle === undefined
-        ) {
-            log.error("Get started title is not visible on the screen!");
-            return false;
-        }
-        log.info("Get started title is visible on the screen!");
-        return true;
-    }
+  async getNumOfArchives(): Promise<number> {
+    return this.archives.count;
+  }
+
+  async getSearchResults(): Promise<string> {
+    return this.searchResults.innerText;
+  }
+
+  async searchBlog(searchCriteria: string): Promise<void> {
+    await t.typeText(this.searchField, searchCriteria)
+  }
+
+  async submitSearch(): Promise<void> {
+    await t.click(this.searchSubmit)
+  }
 }
+
+export default new HomePage();
