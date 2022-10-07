@@ -2,7 +2,7 @@ import { t } from "testcafe";
 
 type Default = string | number | number[] | boolean | undefined;
 
-export class ChaiAssertions {
+export class Assertions {
   public static async checkIfActualValueIsTrue(actual: boolean): Promise<void> {
     t.expect(actual).ok;
   }
